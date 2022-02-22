@@ -1,0 +1,39 @@
+@model IEnumerable<Imoveis>
+@{
+    Layout = "_LayoutColaborador";
+}
+@{
+    ViewData["Title"] = "Listar Imoveis";
+}
+
+<div class="row mt-5">
+    @foreach (Imoveis a in Model)
+    {
+        <div class="col-sm-4 mb-5">
+            <div class="card">
+
+                <img src="@a.Imagem" class="card-img-top">
+                <div class="card-body">
+                    <h4 class="card-title">@a.Nome</h4>
+                    <h6 class="card-suntitle mb2 text-muted">R$ @a.Valor</h6>
+                    <p class="card-text text-justify">@a.Descricao</p>
+                </div>
+
+                <div>
+                    <ul class="list-group list-group-flush text-center">
+                        <li class="list-group-item"><i class="fas fa-bed" style="font-size: 20px;"></i> @a.Quartos | <i
+                            class="fas fa-bath" style="font-size: 20px;"></i> @a.Banheiros | <i class="fas fa-car"
+                            style="font-size: 20px;"></i> @a.Garagem</li>
+                        <li class="list-group-item">@a.Cidade | @a.Bairro</li>
+                    </ul>
+                </div>
+
+                <div class="card-body text-center">
+                    <a href="/Imoveis/ExcluirImoveis?Id=@a.Id">Excluir</a> |
+                    <a href="/Imoveis/Editarimoveis?Id=@a.Id">Editar</a>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

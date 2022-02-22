@@ -1,0 +1,52 @@
+@model ICollection<Colaborador>
+
+@{
+    Layout = "_LayoutColaborador";
+}
+
+@{
+    ViewData["Title"] = "Listar Colaboradores";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped">
+            @if (Model.Count > 0)
+            {
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Cpf</th>
+                        <th>Login</th>
+                        <th>Senha</th>
+                        <th>Tipo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Colaborador c in Model)
+                    {
+                        <tr>
+                            <td>@c.Id</td>
+                            <td>@c.Nome</td>
+                            <td>@c.Cpf</td>
+                            <td>@c.Login</td>
+                            <td>@c.Senha</td>
+                            <td>
+                                @{
+                                    string s = c.Tipo == 0 ? "Admin" : "User comum";
+                                } @s
+                            </td>
+                            <td><a href="ExcluirColaborador?id=@c.Id">excluir</a></td>
+                        </tr>
+                    }
+                </tbody>
+            }
+
+            else
+            {
+                <p>Nenhum registro encontrado</p>
+            }
+        </table>
+    </div>
+</div>

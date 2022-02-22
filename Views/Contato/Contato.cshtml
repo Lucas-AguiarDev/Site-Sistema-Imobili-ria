@@ -1,0 +1,40 @@
+@model Contato
+
+@{
+    ViewData["Title"] = "Entrar em Contato";
+}
+
+<div id="form">
+
+    <h1 class="mb-5 mt-5 text-center display-4">Entrar em contato:</h1>
+    <form asp-action="Contato" method="POST">
+
+        <p class="text-center mb-5">
+            <label asp-for="Nome" class="col-sm-1 form-label">Nome:</label>
+            <input asp-for="Nome" class="col-sm-11" required>
+
+            <label asp-for="Telefone" class="col-sm-1 form-label">Telefone:</label>
+            <input asp-for="Telefone" class="col-sm-11" required>
+
+            <label asp-for="Email" class="col-sm-1 form-label">Email:</label>
+            <input asp-for="Email" class="col-sm-11" required>
+        </p>
+
+        <p class="text-center mb-5">
+            <label asp-for="Assunto" class="col-sm-1 form-label">Assunto:</label>
+            <input asp-for="Assunto" class="col-sm-11" required>
+
+            <label asp-for="Mensagem" class="col-sm-1 form-label">Mensagem:</label>
+            <textarea asp-for="Mensagem" class="col-sm-11" required cols="30" rows="10"></textarea>
+        </p>
+
+        <p>
+            <input type="submit" value="Enviar" class="btn btn-primary col-sm-12">
+        </p>
+
+        <p id="pMensagem" class="text-center text-success">@ViewBag.Mensagem</p>
+
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    </form>
+</div>

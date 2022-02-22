@@ -1,0 +1,41 @@
+@model Colaborador
+@{
+    Layout = "_LayoutColaborador";
+}
+
+@{
+    ViewData["Title"] = "Cadastrar Colaboradores";
+}
+
+<div id="form">
+
+    <h1 class="mb-5 mt-5 text-center display-4">Cadastro de Colaboradores</h1>
+    <form asp-action="CadastrarColaboradores" method="POST">
+
+        <p class="text-center mb-5">
+            <label asp-for="Nome" class="col-sm-1 form-label">Nome:</label>
+            <input asp-for="Nome" class="col-sm-3" required>
+
+            <label asp-for="Cpf" class="col-sm-1 form-label">Cpf:</label>
+            <input asp-for="Cpf" class="col-sm-3" required>
+
+            <label asp-for="Tipo" class="col-sm-1 form-label">Acesso:</label>
+            <input asp-for="Tipo" class="col-sm-1" required>
+        </p>
+
+        <p class="text-center mb-5">
+            <label asp-for="Login" class="col-sm-1 form-label">Login:</label>
+            <input asp-for="Login" class="col-sm-4" required>
+
+            <label asp-for="Senha" class="col-sm-1 form-label">Senha:</label>
+            <input type="password" asp-for="Senha" class="col-sm-4" required>
+        </p>
+
+        <p>
+            <input type="submit" value="Cadastrar" class="btn btn-primary col-sm-12">
+        </p>
+
+        <p id="pMensagem" class="text-center text-success">@ViewBag.Mensagem</p>
+
+    </form>
+</div>

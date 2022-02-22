@@ -1,0 +1,115 @@
+@using Microsoft.AspNetCore.Http;
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MVImoveis</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <!-- fontawsome -->
+    <script src="https://kit.fontawesome.com/1a8d8bc7ce.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-primary">
+            <div class="container">
+                <h2 style="font-size: 2.5em;">
+                    <a asp-controller="Colaborador" asp-action="Home" class="nav-link"><strong
+                            style="color: yellow;">MV</strong><strong style="color: white;">Imobiliária</strong></a>
+                </h2>
+
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#nav-principal">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse font-weight-bold" id="nav-principal">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a asp-controller="Colaborador" asp-action="Home" class="nav-link text-white">Home</a>
+                        </li>
+
+                        @if (Context.Session.GetInt32("Login") != null)
+                        {
+                            <li class="nav-item">
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Imoveis
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a asp-controller="Imoveis" asp-action="CadastrarImoveis"
+                                        class="nav-link text-dark">Cadastrar Imóveis</a>
+                                        <a asp-controller="Imoveis" asp-action="ListarImoveis"
+                                        class="nav-link text-dark">Listar Imóveis</a>
+                                    </div>
+                                </div>
+                            </li>
+
+                            @if (Context.Session.GetInt32("tipo") == 0)
+                            {
+                                <li class="nav-item">
+                                    <div class="dropdown">
+                                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Colaboradores
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a asp-controller="Colaborador" asp-action="CadastrarColaboradores"
+                                        class="nav-link text-dark">Cadastrar Colaborador</a>
+                                            <a asp-controller="Colaborador" asp-action="ListarColaboradores"
+                                        class="nav-link text-dark">Listar Colaboradores</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+
+                            <li class="nav-item">
+                                <a asp-controller="Contato" asp-action="ListarContato" class="text-light nav-link ml-4">Contatos</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <span asp-controller="Colaborador" asp-action="Login" class="text-light nav-link ml-4">Olá,
+                                    @Context.Session.GetString("nome")</span>
+                            </li>
+
+                            <li class="nav-item">
+                                <a asp-controller="Colaborador" asp-action="#" class="btn btn-outline-light ml-1">Sair</a>
+                            </li>
+                        }
+
+                        @if (Context.Session.GetInt32("Login") == null)
+                        {
+                            <li class="nav-item">
+                                <a asp-controller="Colaborador" asp-action="Login"
+                                class="btn btn-outline-light ml-4">Entrar</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer bg-primary fixed-bottom" style="height: 50px;">
+        <span class="text-light navbar-nav text-center align-self-center" style="font-size: 1.2em;">&copy; MV
+            Imobiliária - Colaboradores - 2021</span>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>

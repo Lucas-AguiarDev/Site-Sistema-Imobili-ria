@@ -1,0 +1,18 @@
+@model Contato
+@{
+    Layout = "_LayoutColaborador";
+}
+
+@{
+    ViewData["Title"] = "Finalizar contato";
+}
+
+<h1 class="text-danger">ALERTA!</h1>
+<H2>Tem certeza que realizou contato com o cliente?</H2>
+
+<form action="excluirContato" method="post">
+    <input type="hidden" name="id" value="@Model.Id">
+
+    <input name="decisao" type="submit" value="CANCELAR">
+    <input name="decisao" type="submit" value="FINALIZAR">
+</form>

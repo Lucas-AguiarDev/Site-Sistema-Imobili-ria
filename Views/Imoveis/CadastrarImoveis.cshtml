@@ -1,0 +1,48 @@
+@model Imoveis
+@{
+    Layout = "_LayoutColaborador";
+}
+
+@{
+    ViewData["Title"] = "Cadastrar Imoveis";
+}
+
+<div id="form">
+
+    <h1 class="mb-5 mt-5 text-center display-4">Cadastro de Imóveis</h1>
+    <form asp-action="CadastrarImoveis" method="post">
+
+        <p class="text-center mb-5">
+            <input asp-for="Nome" placeholder="Nome" class="col-sm-5 mb-1" required>
+
+            <input asp-for="Descricao" placeholder="Descricao" class="col-sm-6" required>
+        </p>
+
+        <p class="text-center mb-5">
+            <input asp-for="Quartos" placeholder="Quartos" class="col-sm-4 mb-1" required>
+
+            <input asp-for="Banheiros" placeholder="Banheiros" class="col-sm-4 mb-1" required>
+
+            <input asp-for="Garagem" placeholder="Garagem" class="col-sm-3" required>
+        </p>
+
+        <p class="text-center mb-5">
+            <input asp-for="Cidade" placeholder="Cidade" class="col-sm-5 mb-1" required>
+
+            <input asp-for="Bairro" placeholder="Bairro" class="col-sm-6" required>
+        </p>
+
+        <p class="text-center mb-5">
+            <input asp-for="Valor" placeholder="Valor" class="col-sm-5 mb-1" required>
+
+            <input asp-for="Imagem" placeholder="Imagem (URL)" class="col-sm-6" required>
+        </p>
+
+        <p class="text-center">
+            <input type="submit" value="Cadastrar" class="btn btn-primary col-sm-11">
+        </p>
+
+        <p id="pMensagem" class="text-center text-success">@ViewBag.Mensagem</p>
+
+    </form>
+</div>
